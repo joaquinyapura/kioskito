@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { kioskoContext } from "../Context/KioscoProvider";
 
 export const ClientesFiltrados = () => {
-  const { clientefiltrado } = useContext(kioskoContext);
+  const { clientefiltrado, actualizarSaldo } = useContext(kioskoContext);
   const [modo, setModo] = useState(null);
   const [input, setInput] = useState("");
 
@@ -11,9 +11,16 @@ export const ClientesFiltrados = () => {
   };
   const procesarTransacción = (e, id) => {
     e.preventDefault();
-    console.log(id, modo, input);
-    setModo(null);
-    setInput();
+    if (modo == "compra") {
+      actualizarSaldo(id, input, "compra");
+
+      setModo(null);
+      setInput();
+    } else {
+      actualizarSaldo(id, input, "pago");
+      setModo(null);
+      setInput();
+    }
   };
 
   return (
@@ -26,6 +33,7 @@ export const ClientesFiltrados = () => {
           <div href="#" className=" w-full ">
             {cliente.nombre} {cliente.apellido}
           </div>
+          <div className="font-bold"> ${cliente.saldo} </div>
           <form className="w-full p-2 flex gap-2">
             <button
               type="button"

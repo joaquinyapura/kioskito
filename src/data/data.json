@@ -1,8 +1,8 @@
 {
     "clientes": [
-      { "id": 1, "nombre": "Lucas", "apellido": "Fernández", "telefono": "1122334455" },
-      { "id": 2, "nombre": "Martina", "apellido": "Gómez", "telefono": "1133445566" },
-      { "id": 3, "nombre": "Santiago", "apellido": "Pérez", "telefono": "1144556677" }
+      { "id": 1, "nombre": "Lucas", "apellido": "Fernández", "telefono": "1122334455", "saldo": 200 },
+      { "id": 2, "nombre": "Martina", "apellido": "Gómez", "telefono": "1133445566","saldo": 200 },
+      { "id": 3, "nombre": "Santiago", "apellido": "Pérez", "telefono": "1144556677","saldo": 200 }
     ],
     "compras": [
       { "id_cliente": 1, "fecha": "2025-04-01", "monto": 500, "descripcion": "Golosinas y gaseosa" },
@@ -14,5 +14,7 @@
       { "id_cliente": 1, "fecha": "2025-04-03", "monto": 400 },
       { "id_cliente": 2, "fecha": "2025-04-04", "monto": 100 }
     ]
+    
+    
   }
   

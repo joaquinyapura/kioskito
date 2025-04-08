@@ -11,7 +11,7 @@ export const BuscadordeClientes = () => {
     setBusqueda(nombre);
 
     if (nombre == "") {
-      setResultados([]);
+      return;
     } else {
       const filtrados = clientes.filter(
         (cliente) =>
