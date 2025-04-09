@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import { kioskoContext } from "../Context/KioscoProvider";
+import { Link } from "react-router-dom";
 
 export const ClientesFiltrados = () => {
   const { clientefiltrado, actualizarSaldo } = useContext(kioskoContext);
@@ -59,6 +60,12 @@ export const ClientesFiltrados = () => {
               💰 Pago
             </button>
           </form>
+          <Link
+            className="p-2 bg-sky-900 text-white"
+            to={`/detallecliente/${cliente.id}`}
+          >
+            detalle semanal
+          </Link>
           {modo && (
             <form
               className="flex flex-col mt-2"
