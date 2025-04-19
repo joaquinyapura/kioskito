@@ -4,8 +4,9 @@ import { Link } from "react-router-dom";
 
 export const ClientesFiltrados = () => {
   const { clientefiltrado, actualizarSaldo } = useContext(kioskoContext);
+
   const [modo, setModo] = useState(null);
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState("a");
 
   const transaccionImput = (e) => {
     setInput(e.target.value);
@@ -14,7 +15,6 @@ export const ClientesFiltrados = () => {
     e.preventDefault();
     if (modo == "compra") {
       actualizarSaldo(id, input, "compra");
-
       setModo(null);
       setInput();
     } else {
@@ -25,16 +25,21 @@ export const ClientesFiltrados = () => {
   };
 
   return (
-    <section className="w-full p-4 mt-2">
+    <section className="w-full p-4 mt-2 flex flex-col items-center">
       {clientefiltrado.map((cliente) => (
         <div
           key={cliente.id}
-          className="flex flex-col text-center bg-sky-200 mb-2 p-4  rounded-md"
+          className="flex flex-col text-center bg-sky-200 mb-2 p-4 w-[350px]  rounded-md"
         >
           <div href="#" className=" w-full ">
             {cliente.nombre} {cliente.apellido}
           </div>
-          <div className="font-bold"> ${cliente.saldo} </div>
+          {cliente.saldo ? (
+            <div className="font-bold"> ${cliente.saldo} </div>
+          ) : (
+            <div>nada</div>
+          )}
+
           <form className="w-full p-2 flex gap-2">
             <button
               type="button"
@@ -64,7 +69,7 @@ export const ClientesFiltrados = () => {
             className="p-2 bg-sky-900 text-white"
             to={`/detallecliente/${cliente.id}`}
           >
-            detalle semanal
+            ultimas compras
           </Link>
           {modo && (
             <form
